@@ -1,0 +1,75 @@
+calculo para obter o pedido final do cliente ao pedir pizzas
+preco = 0 #funciona como um acumulador de preços caso o cliente opte por mais de uma pizza
+
+print('Bem-vindo a Pizzaria da Stéfanie Borges Batista')
+
+print('-'*21, 'Cardápio','-'*20) #tabela começo
+print('| Código | Descrição  | Pizza Média | Pizza Grande |')
+print('|   21   | Napolitana |  R$ 20,00   |  R$ 26,00    |')
+print('|   22   | Margherita |  R$ 20,00   |  R$ 26,00    |')
+print('|   23   | Calabresa  |  R$ 25,00   |  R$ 32,00    |')
+print('|   24   | Toscana    |  R$ 30,00   |  R$ 39,00    |')
+print('|   25   | Portuguesa |  R$ 30,00   |  R$ 39,00    |')
+print('-'*51) #tabela final
+
+while True: #laço de repetição
+  print('Qual tamanho de pizza que deseja (M/G)? ')
+  tamanho = input('>>')
+  if tamanho == 'M': #primeira opção de escolha do cliente e seus respectivos preços abaixo
+   print('Entre com o código desejado: ')
+   codigo = input('>>')
+   if codigo == '21':
+    pizza = 'Pizza Napolitana'
+    preco += 20 #preco = acumulador reponsável pelo acumulo de valores caso o cliente peça mais de uma pizza
+   elif codigo == '22':
+    pizza = 'Pizza Margherita'
+    preco += 20
+   elif codigo == '23':
+    pizza = 'Pizza Calabresa'
+    preco += 25
+   elif codigo == '24':
+    pizza = 'Pizza Toscana '
+    preco += 30
+   elif codigo == '25':
+     pizza = 'Pizza Portuguesa'
+     preco += 30
+   else: #esse else é referente à digitação errada do código das pizzas
+     print('Opção inválida')
+     continue #retorno a variável tamanho
+   print('Você pediu uma {}.'.format(pizza))
+
+  else: #se o cliente não escolher o tamanho M e sim o tamanho G, o algoritmo será executado a partir daqui
+   if tamanho == 'G':#segunda opção de escolha do cliente e seus respectivos preços abaixo
+    print('Entre com o código desejado: ')
+    codigo = input('>>')
+    if codigo == '21':
+     pizza = 'Pizza Napolitana'
+     preco += 26
+    elif codigo == '22':
+      pizza = 'Pizza Margherita'
+      preco += 26
+    elif codigo == '23':
+      pizza = 'Pizza Calabresa'
+      preco += 32
+    elif codigo == '24':
+      pizza = 'Pizza Toscana'
+      preco += 39
+    elif codigo == '25':
+      pizza = 'Pizza Portuguesa'
+      preco += 39
+    else: #esse else é referente à digitação errada do código das pizzas
+     print('Opção inválida')
+     continue
+    print('Você pediu uma {}.'.format(pizza))
+   else: #esse else é referente à digitação errada do tamanho das pizzas
+    print('Opção inválida')
+    continue
+  print('Deseja mais alguma coisa? ') #menu
+  print('1 - Sim')
+  print('0 - Não')
+  resposta = input('>>')
+  if resposta == '1':
+    continue #retorna para a variável tamanho
+  else:
+    print('O valor final da conta é de:R$ {:.2f}'.format(preco))
+    break #encerra a execução do laço de repetição do algoritmo
