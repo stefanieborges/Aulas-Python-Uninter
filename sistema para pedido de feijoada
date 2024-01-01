@@ -1,0 +1,62 @@
+#-----------------INICIO DA FUNÇÃO VOLUME---------------------------------------
+def volumeFeijoada(): #função
+  while True: #laço de repetição
+    try:
+      volumeF = int(input('Entre com a quantidade que deseja (ml):'))
+      if volumeF >= 300 and volumeF <= 5000: #se o volume for maior igual a 300 e menor igual a 5000, o algoritmo o multiplicará por 0.08
+        return volumeF * 0.08  #valor recebido pelo programa principal
+      else: #se a condição acima não for atendida, o algoritmo executará essa condição
+          print('Não aceitamos porções menores que 300ml ou maiores que 5l. Tente novamente!')
+          continue
+    except ValueError: #se o usuário digitar valores do tipo float ou string, o algoritmo executará essa condição
+     print('Pare de digitar valores não numéricos. Tente novamente!')
+     continue
+#------------------FIM DA FUNÇÃO VOLUME-----------------------------------------
+#-----------------INICIO DA FUNÇÃO OPÇÃO----------------------------------------
+def opcaoFeijoada(): #função
+  while True: #laço de repetição
+    opcaoF = input('Entre com a opção de Feijoada: \nb- Básica (Feijão + paiol + costelinha) \np- Premium (Feijão + paiol + costelinha + partes do porco) \ns-suprema (Feijão + paiol + costelinha + partes do porco + charque + calabresa + bacon)\n>>')
+     #Menu acima e as respectivas condições abaixo
+    if opcaoF == 'b':
+          return 1.00 #valor recebido pelo programa principal
+    elif opcaoF == 'p':
+          return 1.25  #valor recebido pelo programa principal
+    elif opcaoF == 's':
+          return 1.50  #valor recebido pelo programa principal
+    else: #se nenhuma das conduições acima forem executadas, o algoritmo executará essa exceção
+          print('Digite a letra correpondente ao pedido. Tente novamente!')
+          continue
+#------------------FIM DA FUNÇÃO OPÇÃO------------------------------------------
+#-----------------INICIO DA FUNÇÃO ACOMPANHAMENTO-------------------------------
+def acompanhamentoFeijoada(): #função
+  acom = 0 #serve para quando o usuário selecionar mais de um acompanhamento (acumulador)
+  while True:
+    try:
+      acompanhamentoF = int(input('Deseja mais algum acompanhamento? \n0- não desejo mais acompanhamentos (encerra pedido) \n1- 200g de arroz \n2- 150g de farofa especial \n3- 100g de couve cozida \n4- 1 laranja descascada \n>>'))
+      #Menu acima e as respectivas condições abaixo
+      if acompanhamentoF == 1:
+        acom += 5 #(acumulador)
+      elif acompanhamentoF == 2:
+        acom += 6 #(acumulador)
+      elif acompanhamentoF == 3:
+        acom += 7  #(acumulador)
+      elif acompanhamentoF == 4:
+        acom += 3 #(acumulador)
+      elif acompanhamentoF == 0:
+       return acom #encerramento da função acompanhamento no programa principal
+      else: #se a condição acima não for atendida, o algoritmo executará essa condição
+       print('Você não digitou uma opção válida')
+       continue
+    except ValueError:  #se o usuário digitar valores do tipo float ou string, o algoritmo executará essa condição
+      print('Pare de digitar valores não numéricos. Tente novamente!')
+      continue
+#------------------FIM DA FUNÇÃO ACOMPANHAMENTO---------------------------------
+#-------------------- INICIO PROGRAMA PRINCIPAL---------------------------------
+print('Bem-Vindo ao Programa de Feijoada da Stéfanie Borges Batista!')
+print('Menu Volume Feijoada')
+volume = volumeFeijoada() #chamado da função
+print('Menu opção de Feijoada')
+opcao = opcaoFeijoada() #chamado da função
+acompanhamento = acompanhamentoFeijoada() #chamado da função
+total = (volume * opcao) + acompanhamento #total do pedido feito pelo usuário
+print('O valor a ser pago é (R$): {:.2f} (volume = {:.2f} * opção = {:.2f} + acompanhamentos = {:.2f})'. format(total, volume, opcao, acompanhamento))
